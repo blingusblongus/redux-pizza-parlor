@@ -38,7 +38,6 @@ function PizzaListItem ({pizza}) {
     return (
         <div className="tile">
             <div>
-                <p>{pizza.image_path}</p>
                 <img src={pizza.image_path} alt="pic of pizza" />
             </div>
 
