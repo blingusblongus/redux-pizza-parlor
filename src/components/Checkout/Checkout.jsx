@@ -50,6 +50,10 @@ function Checkout() {
     history.push("/");
   };
 
+  const toInfo = () => {
+    history.push('/info')
+  } // end toInfo
+
   return (
     <>
       <header>
