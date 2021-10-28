@@ -10,14 +10,7 @@ import logger from 'redux-logger';
 
 // Reducers
 // reducer to hold/modify the contents of the cart
-const cart = (state = [{
-    "id": 1,
-    "name": "Tomato Soup",
-    "description": "If you like pizza, but you hate the toppings, the cheese, and the crust, you'll love this!",
-    "price": "12.99",
-    "image_path": "images/pizza_photo.png"
-}], action) => {
-    
+const cart = (state = [], action) => {   
     switch(action.type) {
         case 'ADD_PIZZA':
             return [...state, action.payload]
@@ -46,6 +39,16 @@ const orders = (state = [], action) => {
             return [...state, action.payload]
         case 'REMOVE_ORDER_ITEM':
             return state.filter(pizza => pizza.name != action.payload.name)
+        default:
+            return state
+    }
+}
+
+// reducer to hold customer info before confirming order
+const customerInfo = (state = {}, action) => {
+    switch(action.type) {
+        case 'ADD_CUSTOMER':
+            return action.payload
         default:
             return state
     }
