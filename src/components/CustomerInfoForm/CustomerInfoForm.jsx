@@ -106,7 +106,7 @@ function CustomerInfoForm(props) {
               <label htmlFor="delivery">Delivery</label>
             </div>
           </div>
-          <button onClick={toHome}>BACK</button>
+          <button onClick={toHome} type="button">BACK</button>
           <button type="submit">NEXT</button>
         </div>
       </form>
