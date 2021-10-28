@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 import './App.css';
-import SelectPizza from '../SelectPizza/SelectPizza';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { HashRouter as Router, Route, Link } from "react-router-dom";
