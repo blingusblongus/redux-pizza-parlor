@@ -13,15 +13,13 @@ function Checkout() {
   const cart = useSelector((store) => store.cart);
   const history = useHistory();
 
-  // const makePizzaArray = () => {
-  //   let pizzaOrder = []
-  //   for(let pizza of cart) {
-  //       pizzaOrder.push({id: pizza.id, quantity: 1})
-  //   }
-  //   console.log('pizzaOrder', pizzaOrder);
-  //   return pizzaOrder
-  // }
-
+  const totalPrice = () => {
+    let total = 0;
+    for (let item of cart) {
+      total += Number(item.price);
+    }
+    return total;
+  };
 
   const newOrder = {
     customer_name: customerInfo.customer_name,
@@ -29,6 +27,7 @@ function Checkout() {
     city: customerInfo.city,
     zip: customerInfo.zip,
     type: customerInfo.type,
+    totalPrice: totalPrice(),
     pizzas: cart
   }
 
@@ -80,7 +79,7 @@ function Checkout() {
           <tbody>
             {cart.map((pizza, i )=> {
               return(
-                <tr id={i}>
+                <tr key={i}>
                 <td>{pizza.name}</td>
                 <td>${pizza.price}</td>
               </tr>
