@@ -6,8 +6,8 @@ function TotalPrice() {
 
   const totalPrice = () => {
     let total = 0;
-    for (item of cart) {
-      total += item.cost;
+    for (let item of cart) {
+      total += item.price;
     }
     return total;
   };
