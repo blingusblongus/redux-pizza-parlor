@@ -13,6 +13,10 @@ function Checkout() {
     history.push("/");
   };
 
+  const toInfo = () => {
+    history.push('/info')
+  } // end toInfo
+
   return (
     <>
       <header>
@@ -43,6 +47,7 @@ function Checkout() {
           </tbody>
         </table>
         <TotalPrice />
+        <button onClick={toInfo}>Back</button>
         <button onClick={handleCheckout}>Checkout</button>
       </div>
     </>
