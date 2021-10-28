@@ -8,6 +8,7 @@ import Header from "../Header/Header.jsx";
 import SelectPizza from "../SelectPizza/SelectPizza.jsx";
 import CustomerInfoForm from '../CustomerInfoForm/CustomerInfoForm.jsx';
 import Checkout from "../Checkout/Checkout.jsx";
+import Admin from "../Admin/Admin";
 // import Admin from '../Admin/Admin.jsx';
 
 function App() {
@@ -47,9 +48,9 @@ function App() {
           <Checkout />
         </Route>
 
-        {/* <Route exact path="/admin">
+        <Route exact path="/admin">
             <Admin />
-        </Route> */}
+        </Route>
       </div>
     </Router>
   );
