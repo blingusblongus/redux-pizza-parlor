@@ -24,7 +24,7 @@ function CustomerInfoForm(props) {
         console.log(order);
 
         dispatch({
-            type: 'ADD_ORDER',
+            type: 'ADD_CUSTOMER',
             payload: order
         })
     }
