@@ -16,6 +16,8 @@ const cart = (state = [], action) => {
             return [...state, action.payload]
         case 'REMOVE_PIZZA':
             return state.filter(pizza=>pizza.name != action.payload.name)
+        case 'CLEAR_CART':
+            return [];
         default:
             return state;
     }
@@ -34,9 +36,9 @@ const pizzaList = (state = [], action) => {
 
 // reducer to add customer info to the cart and create the total order
 const orders = (state = [], action) => {
-    switch(action.payload) {
+    switch(action.type) {
         case 'ADD_ORDER':
-            return [...state, action.payload]
+            return [...state, action.payload];
         case 'REMOVE_ORDER_ITEM':
             return state.filter(pizza => pizza.name != action.payload.name)
         default:
@@ -49,6 +51,8 @@ const customerInfo = (state = {}, action) => {
     switch(action.type) {
         case 'ADD_CUSTOMER':
             return action.payload
+        case 'CLEAR_CUSTOMER':
+            return {}
         default:
             return state
     }
