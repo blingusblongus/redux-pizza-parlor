@@ -10,8 +10,7 @@ import logger from 'redux-logger';
 
 // Reducers
 // reducer to hold/modify the contents of the cart
-const cart = (state = [], action) => {
-    console.log('I am the cart reducer!');
+const cart = (state = [], action) => {   
     switch(action.type) {
         case 'ADD_PIZZA':
             return [...state, action.payload]
@@ -24,7 +23,6 @@ const cart = (state = [], action) => {
 
 // reducer used to set the list of all pizzas available
 const pizzaList = (state = [], action) => {
-    console.log('I am the pizzaList reducer!')
     switch(action.type) {
         case 'SET_PIZZA':
             return action.payload
@@ -36,7 +34,6 @@ const pizzaList = (state = [], action) => {
 
 // reducer to add customer info to the cart and create the total order
 const orders = (state = [], action) => {
-    console.log('I am the orders reducer!!');
     switch(action.payload) {
         case 'ADD_ORDER':
             return [...state, action.payload]
@@ -47,12 +44,23 @@ const orders = (state = [], action) => {
     }
 }
 
+// reducer to hold customer info before confirming order
+const customerInfo = (state = {}, action) => {
+    switch(action.type) {
+        case 'ADD_CUSTOMER':
+            return action.payload
+        default:
+            return state
+    }
+}
+
 //Create the store
 const storeInstance = createStore(
     combineReducers({
         cart,
         pizzaList,
-        orders
+        orders,
+        customerInfo
     }), applyMiddleware(
         logger
     )

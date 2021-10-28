@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import { HashRouter as Router, Route } from "react-router-dom";
 import Header from "../Header/Header.jsx";
 import SelectPizza from "../SelectPizza/SelectPizza.jsx";
-// import CustomerInfoForm from '../CustomerInfoForm.jsx';
+import CustomerInfoForm from '../CustomerInfoForm/CustomerInfoForm.jsx';
 import Checkout from "../Checkout/Checkout.jsx";
 // import Admin from '../Admin/Admin.jsx';
 
@@ -39,20 +39,17 @@ function App() {
           <SelectPizza />
         </Route>
 
-        {/* <Route exact path="/info">
+        <Route path="/info">
           <CustomerInfoForm />
-        </Route> */}
+        </Route>
 
-        <Route exact path="/checkout">
+        <Route path="/checkout">
           <Checkout />
         </Route>
 
         {/* <Route exact path="/admin">
             <Admin />
         </Route> */}
-
-        {/* <img src="images/pizza_photo.png" /> */}
-        {/* <p>Pizza is great.</p> */}
       </div>
     </Router>
   );
