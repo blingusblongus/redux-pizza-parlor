@@ -4,7 +4,7 @@ import { useSelector } from "react-redux"
 function SelectPizza () {
 
     const pizzaList = useSelector(store => store.pizzaList)
-    console.log('SelectPizza', pizzaList);
+    // console.log('SelectPizza', pizzaList);
     
     return (
         <div>

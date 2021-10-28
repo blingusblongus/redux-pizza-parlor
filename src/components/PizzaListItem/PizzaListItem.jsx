@@ -1,19 +1,43 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 
 
 function PizzaListItem ({pizza}) {
 
     let [toggle, setToggle] = useState(true);
+    // let [newPizza, setNewPizza] = useState('');
+
+    const dispatch = useDispatch();
 
     function changeButton () {
         setToggle(!toggle);
     } // end changeButton
 
-    console.log('this is pizza', pizza);
+    const addPizza = () => {
+        
+        // setNewPizza(pizza)
+        console.log('Add clicked');
+        dispatch({
+            type: 'ADD_PIZZA',
+            payload: pizza
+        })
+        changeButton ()
+        
+    } // addPizza
+
+    const removePizza = () => {
+        console.log('Remove clicked');
+        dispatch({
+            type: 'REMOVE_PIZZA',
+            payload: pizza
+        })
+        changeButton ()
+    } // end remove
+
+    // console.log('this is pizza', pizza);
     return (
         <div className="tile">
             <div>
-                <p>{pizza.image_path}</p>
                 <img src={pizza.image_path} alt="pic of pizza" />
             </div>
 
@@ -23,7 +47,14 @@ function PizzaListItem ({pizza}) {
             </div>
 
             <div>
-                {toggle ? (<button onClick={changeButton}>ADD</button>) : (<button onClick={changeButton}>REMOVE</button>)}
+                {toggle ? 
+                (<button 
+                    onClick={addPizza}
+                    // onChange={(event) => set NewPizza(event.target.value)}
+                    value={pizza}>ADD</button>)
+                    : 
+                (<button onClick={removePizza}>REMOVE</button>)
+                }
             </div>
         </div>
     )
