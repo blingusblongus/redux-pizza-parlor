@@ -17,8 +17,6 @@ const cart = (state = [{
     "price": "12.99",
     "image_path": "images/pizza_photo.png"
 }], action) => {
-    console.log('I am the cart reducer!');
-    console.log(state);
     
     switch(action.type) {
         case 'ADD_PIZZA':
@@ -32,7 +30,6 @@ const cart = (state = [{
 
 // reducer used to set the list of all pizzas available
 const pizzaList = (state = [], action) => {
-    console.log('I am the pizzaList reducer!')
     switch(action.type) {
         case 'SET_PIZZA':
             return action.payload
@@ -44,7 +41,6 @@ const pizzaList = (state = [], action) => {
 
 // reducer to add customer info to the cart and create the total order
 const orders = (state = [], action) => {
-    console.log('I am the orders reducer!!');
     switch(action.payload) {
         case 'ADD_ORDER':
             return [...state, action.payload]
