@@ -59,7 +59,8 @@ const storeInstance = createStore(
     combineReducers({
         cart,
         pizzaList,
-        orders
+        orders,
+        customerInfo
     }), applyMiddleware(
         logger
     )

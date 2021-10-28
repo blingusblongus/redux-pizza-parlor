@@ -1,12 +1,13 @@
 import React from 'react';
 import axios from 'axios';
 import './App.css';
+
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { HashRouter as Router, Route, Link } from "react-router-dom";
 import Header from '../Header/Header.jsx'
 import SelectPizza from "../SelectPizza/SelectPizza.jsx";
-// import CustomerInfoForm from '../CustomerInfoForm.jsx';
+import CustomerInfoForm from '../CustomerInfoForm/CustomerInfoForm';
 // import Checkout from '../Checkout/Checkout.jsx';
 // import Admin from '../Admin/Admin.jsx';
 
@@ -33,6 +34,7 @@ function App() {
   }, [])
 
   return (
+
     <Router>
       <div className="App">
         <Header />
@@ -41,11 +43,11 @@ function App() {
           <SelectPizza />
         </Route>
 
-        {/* <Route path="/info">
+        <Route path="/info">
           <CustomerInfoForm />
         </Route>
 
-        <Route path="/checkout">
+        {/* <Route path="/checkout">
           <Checkout />
         </Route>
 
