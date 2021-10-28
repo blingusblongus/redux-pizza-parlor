@@ -15,7 +15,7 @@ const cart = (state = [], action) => {
     switch(action.type) {
         case 'ADD_PIZZA':
             return [...state, action.payload]
-        case 'REOVE_PIZZA':
+        case 'REMOVE_PIZZA':
             return state.filter(pizza=>pizza.name != action.payload.name)
         default:
             return state;
@@ -25,9 +25,9 @@ const cart = (state = [], action) => {
 // reducer used to set the list of all pizzas available
 const pizzaList = (state = [], action) => {
     console.log('I am the pizzaList reducer!')
-    switch(action.payload) {
+    switch(action.type) {
         case 'SET_PIZZA':
-            return [...state, action.payload]
+            return action.payload
         default:
             return state;
     }
@@ -40,7 +40,7 @@ const orders = (state = [], action) => {
     switch(action.payload) {
         case 'ADD_ORDER':
             return [...state, action.payload]
-        case 'REMOVE+ORDER_ITEM':
+        case 'REMOVE_ORDER_ITEM':
             return state.filter(pizza => pizza.name != action.payload.name)
         default:
             return state

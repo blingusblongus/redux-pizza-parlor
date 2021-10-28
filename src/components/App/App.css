@@ -13,3 +13,7 @@
 .App-title {
   font-size: 2em;
 }
+
+.tile {
+  border: 5px solid black;
+}
