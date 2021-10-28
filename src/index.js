@@ -51,6 +51,16 @@ const orders = (state = [], action) => {
     }
 }
 
+// reducer to hold customer info before confirming order
+const customerInfo = (state = {}, action) => {
+    switch(action.type) {
+        case 'ADD_CUSTOMER':
+            return action.payload
+        default:
+            return state
+    }
+}
+
 //Create the store
 const storeInstance = createStore(
     combineReducers({
