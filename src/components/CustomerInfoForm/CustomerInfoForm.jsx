@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./CustomerInfoForm.css";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router";
 
 function CustomerInfoForm(props) {
   const dispatch = useDispatch();
@@ -10,6 +11,13 @@ function CustomerInfoForm(props) {
   const [zip, setZip] = useState("");
   // type is Pickup by default
   const [type, setType] = useState("Pickup");
+
+  const history = useHistory();
+
+  const toHome = () => {
+    console.log('inside toHome');
+    history.push('/')
+  } // end toInfo
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -29,10 +37,13 @@ function CustomerInfoForm(props) {
       type: "ADD_CUSTOMER",
       payload: order,
     });
+
+    history.push('/checkout')
+
   };
 
   const handleRadio = (e) => {
-    setType(e.target.value);
+    setType(e.target.value)
   };
 
   return (
@@ -95,6 +106,7 @@ function CustomerInfoForm(props) {
               <label htmlFor="delivery">Delivery</label>
             </div>
           </div>
+          <button onClick={toHome}>BACK</button>
           <button type="submit">NEXT</button>
         </div>
       </form>
