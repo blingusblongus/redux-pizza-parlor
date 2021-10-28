@@ -9,18 +9,20 @@ function PizzaListItem ({pizza}) {
         setToggle(!toggle);
     } // end changeButton
 
+    console.log('this is pizza', pizza);
     return (
-        <div> // tile div 
-
-            <div> // picture div
-                <img src={pizza.image_path} alt="" />
+        <div className="tile">
+            <div>
+                <p>{pizza.image_path}</p>
+                <img src={pizza.image_path} alt="pic of pizza" />
             </div>
 
-            <div> // Description / Price div 
+            <div>
                 <p>{pizza.description}</p>
+                <p>{pizza.price}</p>
             </div>
 
-            <div> // button div
+            <div>
                 {toggle ? (<button onClick={changeButton}>ADD</button>) : (<button onClick={changeButton}>REMOVE</button>)}
             </div>
         </div>
