@@ -9,6 +9,7 @@ function CustomerInfoForm(props) {
     // type is Pickup by default
     const [type, setType] = useState('Pickup');
 
+
     //This will need to obtain the cart info,
     //combine it with the form info,
     //and DISPATCH it to the order reducer
