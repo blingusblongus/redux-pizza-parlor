@@ -14,7 +14,9 @@ function TotalPrice() {
   };
 
   return (
-      <h4 className="Total-Price">CartIcon Total: ${totalPrice()}</h4>
+    <>
+      <div className="Total-Price">CartIcon Total: ${totalPrice()}</div>
+    </>
   );
 }
 

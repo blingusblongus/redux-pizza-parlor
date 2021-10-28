@@ -1,15 +1,46 @@
 import "./Checkout.css";
 import Header from "../Header/Header";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 import TotalPrice from "../TotalPrice/TotalPrice";
 
 function Checkout() {
-  const customerInfo = useSelector((store) => store.customerInfo);
 
-  let history = useHistory();
+  const dispatch = useDispatch();
+
+  const customerInfo = useSelector((store) => store.customerInfo);
+  const cart = useSelector((store) => store.cart);
+  const history = useHistory();
+
+  const totalPrice = () => {
+    let total = 0;
+    for (let item of cart) {
+      total += Number(item.price);
+    }
+    return total;
+  };
+
+  const newOrder = {
+    customer_name: customerInfo.customer_name,
+    street_address: customerInfo.street_address,
+    city: customerInfo.city,
+    zip: customerInfo.zip,
+    type: customerInfo.type,
+    totalPrice: totalPrice(),
+    pizzas: cart
+  }
 
   const handleCheckout = () => {
+    dispatch({
+      type: 'ADD_ORDER',
+      payload: newOrder
+    })
+    dispatch({
+      type: 'CLEAR_CART',
+    })
+    dispatch({
+      type: 'CLEAR_CUSTOMER',
+    })
     history.push("/");
   };
 
@@ -32,6 +63,7 @@ function Checkout() {
           </li>
         </ul>
         <h4>For {customerInfo.type}</h4>
+        {/* <h5>{newOrder.pizza}</h5> */}
         <table>
           <thead>
             <tr>
@@ -40,14 +72,17 @@ function Checkout() {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>{customerInfo.name}</td>
-              <td>{customerInfo.price}</td>
-            </tr>
+            {cart.map((pizza, i )=> {
+              return(
+                <tr key={i}>
+                <td>{pizza.name}</td>
+                <td>${pizza.price}</td>
+              </tr>
+              )
+            })}
           </tbody>
         </table>
-        <TotalPrice />
-        <button onClick={toInfo}>Back</button>
+        <h3>{<TotalPrice />}</h3>
         <button onClick={handleCheckout}>Checkout</button>
       </div>
     </>
