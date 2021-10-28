@@ -1,7 +1,9 @@
 import { useState } from "react";
 import './CustomerInfoForm.css';
+import { useDispatch } from "react-redux";
 
 function CustomerInfoForm(props) {
+    const dispatch = useDispatch();
     const [name, setName] = useState('');
     const [city, setCity] = useState('');
     const [address, setAddress] = useState('');
@@ -10,14 +12,26 @@ function CustomerInfoForm(props) {
     const [type, setType] = useState('Pickup');
 
     const handleSubmit = () => {
+        const order = {
+            customer_name: name,
+            street_address: address,
+            city: city,
+            zip: zip,
+            type: type
+        }
 
+        console.log('Order submitted:');
+        console.log(order);
+
+        dispatch({
+            type: 'ADD_ORDER',
+            payload: order
+        })
     }
 
     const handleRadio = (e) => {
             setType(e.target.value);
     }
-
-    console.log(type);
 
     return (
         <div id="info-page">
