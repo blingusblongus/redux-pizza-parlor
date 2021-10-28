@@ -2,6 +2,7 @@ import "./Checkout.css";
 import Header from "../Header/Header";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
+import TotalPrice from "../TotalPrice/TotalPrice";
 
 function Checkout() {
   const customerInfo = useSelector((store) => store.customerInfo);
@@ -41,7 +42,7 @@ function Checkout() {
             </tr>
           </tbody>
         </table>
-        <h3>Total: {customerInfo.total}</h3>
+        <TotalPrice />
         <button onClick={handleCheckout}>Checkout</button>
       </div>
     </>
