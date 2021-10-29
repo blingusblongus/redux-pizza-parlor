@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 import TotalPrice from "../TotalPrice/TotalPrice";
 
-
 function Checkout() {
 
   const dispatch = useDispatch();
@@ -84,6 +83,7 @@ function Checkout() {
           </tbody>
         </table>
         <h3>{<TotalPrice />}</h3>
+        <button onClick={()=>history.push('/info')}>Back</button>
         <button onClick={handleCheckout}>Checkout</button>
       </div>
     </>
