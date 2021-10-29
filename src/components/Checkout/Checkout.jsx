@@ -83,6 +83,7 @@ function Checkout() {
           </tbody>
         </table>
         <h3>{<TotalPrice />}</h3>
+        <button onClick={()=>history.push('/info')}>Back</button>
         <button onClick={handleCheckout}>Checkout</button>
       </div>
     </>
