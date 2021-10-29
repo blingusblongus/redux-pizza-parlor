@@ -1,9 +1,10 @@
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import MoreDetails from "../MoreDetails/MoreDetails";
+import axios from 'axios';
 
-function Admin() {
+function Admin({fetchOrders}) {
 
     const orders = useSelector(state => state.orders)
 
@@ -17,7 +18,20 @@ function Admin() {
     } // end toHome
 
     const handleMoreDetails = (i) => {
+
+        
         console.log('clicked handleMoreDetails');
+        console.log(orders[i])
+        let id = orders[i].id;
+
+        axios.get(`/admin/${id || ''}`)
+            .then(response => {
+                console.log(`GET at ${id} success` );
+                console.log(response.data);
+            }).catch(err => {
+                console.log(`GET at ${id} err`);
+                console.log(err);
+              })
         // setMoreDetailsToggle(true);
         // setActiveOrder(orders[i]);
     } // end handleMoreDetails
@@ -26,6 +40,10 @@ function Admin() {
         console.log('clicked clearDetails');
         setMoreDetailsToggle(false);
     } // end clearDetails
+
+    useEffect(() => {
+        fetchOrders();
+    }, []);
     
     console.log(activeOrder);
 
