@@ -10,7 +10,7 @@ function TotalPrice() {
     for (let item of cart) {
       total += Number(item.price);
     }
-    return total;
+    return total.toFixed(2);
   };
 
   return (
