@@ -3,6 +3,8 @@ import PizzaListItem from "../PizzaListItem/PizzaListItem"
 import { useSelector } from "react-redux"
 import { useHistory } from "react-router"
 import Header from "../Header/Header";
+import Button from "@mui/material/Button";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
 
 function SelectPizza() {
@@ -16,19 +18,26 @@ function SelectPizza() {
     } // end toInfo
 
     return (
-        <>
-            <header>
-                <Header display={true} />
-            </header>
-            <div className="container">
-                {pizzaList.map((pizza) => {
-                    return <PizzaListItem pizza={pizza} key={pizza.id} />;
-                })}
-            </div>
-            <div>
-                <button onClick={toInfo}>NEXT</button>
-            </div>
-        </>
+      <>
+        <header>
+          <Header display={true} />
+        </header>
+        <div className="container">
+          {pizzaList.map((pizza) => {
+            return <PizzaListItem pizza={pizza} key={pizza.id} />;
+          })}
+        </div>
+        <div>
+          <Button
+            type="submit"
+            variant="contained"
+            endIcon={<ArrowForwardIosIcon />}
+            onClick={toInfo}
+          >
+            Next
+          </Button>
+        </div>
+      </>
     );
 
 } // end SelectPizza

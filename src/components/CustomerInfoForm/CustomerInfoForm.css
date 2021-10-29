@@ -2,6 +2,16 @@
     display: block;
 }
 
+
 .flex-container {
     display: flex;
+}
+
+.custInfoInputs {
+    list-style: none;
+    margin-right: 25px;
+}
+
+.adio-container {
+    margin: 10px;
 }
