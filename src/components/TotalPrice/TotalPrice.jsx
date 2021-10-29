@@ -1,8 +1,8 @@
 import "./TotalPrice.css";
 import { useSelector } from "react-redux";
+import LocalGroceryStoreIcon from "@mui/icons-material/LocalGroceryStore";
 
 function TotalPrice() {
-  
   const cart = useSelector((store) => store.cart);
 
   const totalPrice = () => {
@@ -15,7 +15,10 @@ function TotalPrice() {
 
   return (
     <>
-      <h4 className="Total-Price">CartIcon Total: ${totalPrice()}</h4>
+      <h4 className="Total-Price">
+        <LocalGroceryStoreIcon />
+        Total: ${totalPrice()}
+      </h4>
     </>
   );
 }
