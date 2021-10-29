@@ -13,3 +13,16 @@
 .App-title {
   font-size: 2em;
 }
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.tile {
+  margin: 10px;
+  padding: 10px;
+} 
+
+

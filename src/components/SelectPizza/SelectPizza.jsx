@@ -22,7 +22,7 @@ function SelectPizza() {
         <header>
           <Header display={true} />
         </header>
-        <div>
+        <div className="container">
           {pizzaList.map((pizza) => {
             return <PizzaListItem pizza={pizza} key={pizza.id} />;
           })}

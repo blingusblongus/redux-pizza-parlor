@@ -38,7 +38,7 @@ const pizzaList = (state = [], action) => {
 const orders = (state = [], action) => {
     switch(action.type) {
         case 'ADD_ORDER':
-            return [...state, action.payload];
+            return action.payload;
         case 'REMOVE_ORDER_ITEM':
             return state.filter(pizza => pizza.name != action.payload.name)
         default:
