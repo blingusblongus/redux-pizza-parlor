@@ -41,9 +41,9 @@ function PizzaListItem({ pizza }) {
 } // addPizza
 
   return (
-    <div className="cardContainer">
+    <div className="tile">
       <div className="card">
-        <Card variant="outlined" sx={{ maxWidth: 345 }}>
+        <Card variant="outlined" sx={{ maxWidth: 345, height: 600}}>
           <CardMedia
             component="img"
             height="350"
@@ -60,6 +60,7 @@ function PizzaListItem({ pizza }) {
             </Typography>
           </CardContent>
           <CardActions className="bottomFlexContainer">
+            <div className="btnContainer">
             {toggle ? (
               <Button
                 variant="outlined"
@@ -76,7 +77,8 @@ function PizzaListItem({ pizza }) {
                 REMOVE
               </Button>
             )}
-            <Typography sx={{ mb: 0 }} color="#800000">
+            </div>
+            <Typography sx={{ mb: 0, height: 31 }} color="#800000">
               ${pizza.price}
             </Typography>
           </CardActions>

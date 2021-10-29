@@ -16,4 +16,15 @@ img {
 .bottomFlexContainer {
     display: flex;
     justify-content: space-between;
+    align-items: flex-end;
 }
+/* 
+.btnContainer {
+  display: flex;
+  justify-content:right
+} */
+
+p {
+    height: 90px;
+}
+
