@@ -96,7 +96,7 @@ function CustomerInfoForm(props) {
                                 id="pickup"
                                 name="type"
                                 onChange={handleRadio}
-                                defaultChecked={true}
+                                defaultChecked={type === "Pickup"}
                                 value="Pickup"
                             ></input>
                             <label htmlFor="pickup">Pickup</label>
@@ -108,6 +108,7 @@ function CustomerInfoForm(props) {
                                 name="type"
                                 onChange={handleRadio}
                                 value="Delivery"
+                                defaultChecked={type === "Delivery"}
                             ></input>
                             <label htmlFor="delivery">Delivery</label>
                         </div>
