@@ -29,16 +29,16 @@ function PizzaListItem({ pizza }) {
     changeButton();
   }; // end remove
 
-    const addPizza = () => {
+  const addPizza = () => {
         
-        // setNewPizza(pizza)
-        console.log('Add clicked');
-        dispatch({
-            type: 'ADD_PIZZA',
-            payload: {...pizza, quantity: 1}
-        })
-        changeButton ()
-    } // addPizza
+    // setNewPizza(pizza)
+    console.log('Add clicked');
+    dispatch({
+        type: 'ADD_PIZZA',
+        payload: {...pizza, quantity: 1}
+    })
+    changeButton ()
+} // addPizza
 
   return (
     <div className="tile">
