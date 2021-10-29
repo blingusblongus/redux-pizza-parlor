@@ -9,10 +9,12 @@ import SelectPizza from "../SelectPizza/SelectPizza.jsx";
 import CustomerInfoForm from '../CustomerInfoForm/CustomerInfoForm.jsx';
 import Checkout from "../Checkout/Checkout.jsx";
 import Admin from "../Admin/Admin";
+import { useHistory } from "react-router";
 // import Admin from '../Admin/Admin.jsx';
 
 function App() {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const fetchPizzas = () => {
     axios
@@ -28,6 +30,24 @@ function App() {
         console.log("Error in GET", err);
       });
   }; // end fetchPizzas
+
+  const fetchOrders = () =>{
+    axios.get('/api/order')
+          .then((response) => {
+            dispatch({
+              type: 'ADD_ORDER',
+              payload: response.data
+            })
+            dispatch({
+              type: 'CLEAR_CART',
+            })
+            dispatch({
+              type: 'CLEAR_CUSTOMER',
+            })
+          }).catch(err => {
+            console.log('Error on GET: ', err);
+          })
+  };
 
   useEffect(() => {
     fetchPizzas();
@@ -45,11 +65,11 @@ function App() {
         </Route>
 
         <Route path="/checkout">
-          <Checkout />
+          <Checkout fetchOrders={fetchOrders}/>
         </Route>
 
         <Route exact path="/admin">
-            <Admin />
+            <Admin fetchOrders={fetchOrders}/>
         </Route>
       </div>
     </Router>

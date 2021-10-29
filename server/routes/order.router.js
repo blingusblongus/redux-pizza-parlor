@@ -13,6 +13,13 @@ router.get('/', (req, res) => {
     });
 })
 
+// // GET Specific order
+// router.get('/admin/:id', (req, res) => {
+//     let id = req.params.id;
+//     console.log('GET at id =', id);
+//     res.sendStatus(200);
+// })
+
 // POST a new order
 router.post('/', async (req, res) => {
     const client = await pool.connect();

@@ -5,7 +5,7 @@ import { useHistory } from "react-router";
 import TotalPrice from "../TotalPrice/TotalPrice";
 import axios from 'axios';
 
-function Checkout() {
+function Checkout({fetchOrders}) {
 
   const dispatch = useDispatch();
 
@@ -41,30 +41,14 @@ function Checkout() {
     }).then(response => {
       console.log('POST response: ', response);
       fetchOrders();
+      history.push("/");
     })
+
+    
   }
-  
 
 
 
-  const fetchOrders = () =>{
-    axios.get('/api/order')
-          .then((response) => {
-            dispatch({
-              type: 'ADD_ORDER',
-              payload: response.data
-            })
-            dispatch({
-              type: 'CLEAR_CART',
-            })
-            dispatch({
-              type: 'CLEAR_CUSTOMER',
-            })
-          }).catch(err => {
-            console.log('Error on GET: ', err);
-          })
-          history.push("/");
-  };
 
   const toInfo = () => {
     history.push('/info')
