@@ -19,7 +19,7 @@ function PizzaListItem ({pizza}) {
         console.log('Add clicked');
         dispatch({
             type: 'ADD_PIZZA',
-            payload: pizza
+            payload: {...pizza, quantity: 1}
         })
         changeButton ()
         
