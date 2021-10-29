@@ -6,6 +6,7 @@ import MoreDetails from "../MoreDetails/MoreDetails";
 function Admin() {
 
     const orders = useSelector(state => state.orders)
+
     const history = useHistory();
     const [moreDetailsToggle, setMoreDetailsToggle] = useState(false);
     const [removeMoreDetails, setRemoveMoreDetails] = useState(false);
@@ -17,8 +18,8 @@ function Admin() {
 
     const handleMoreDetails = (i) => {
         console.log('clicked handleMoreDetails');
-        setMoreDetailsToggle(true);
-        setActiveOrder(orders[i]);
+        // setMoreDetailsToggle(true);
+        // setActiveOrder(orders[i]);
     } // end handleMoreDetails
 
     const clearDetails = () => {
@@ -42,18 +43,18 @@ function Admin() {
                     {orders.map((orderItem, i) => {
                         return (
                             <tr
-                                onClick={() => handleMoreDetails(i)}
+                                // onClick={() => handleMoreDetails(i)}
                                 key={i}>
                                 <td>{orderItem.customer_name}</td>
                                 <td>{orderItem.type}</td>
-                                <td>{orderItem.totalPrice}</td>
+                                <td>{orderItem.total}</td>
                             </tr>
                         )
                     })}
                 </tbody>
             </table>
 
-            <div>
+            {/* <div>
                 {
                 moreDetailsToggle ? 
                 <>
@@ -67,7 +68,7 @@ function Admin() {
 
                 <button>CLEAR</button>
 
-            </div>
+            </div> */}
 
             <button onClick={toHome}>HOME</button>
         </>
