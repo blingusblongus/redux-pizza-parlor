@@ -15,10 +15,10 @@ function TotalPrice() {
 
   return (
     <>
-      <h4 className="Total-Price">
+      <div className="Total-Price">
         <LocalGroceryStoreIcon />
         Total: ${totalPrice()}
-      </h4>
+      </div>
     </>
   );
 }

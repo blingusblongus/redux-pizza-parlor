@@ -3,6 +3,7 @@ import Header from "../Header/Header";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 import TotalPrice from "../TotalPrice/TotalPrice";
+import axios from 'axios';
 
 function Checkout() {
 
@@ -26,22 +27,43 @@ function Checkout() {
     city: customerInfo.city,
     zip: customerInfo.zip,
     type: customerInfo.type,
-    totalPrice: totalPrice(),
+    total: totalPrice(),
     pizzas: cart
   }
 
-  const handleCheckout = () => {
-    dispatch({
-      type: 'ADD_ORDER',
-      payload: newOrder
+  const handleCheckout = (e) => {
+    e.preventDefault();
+
+    axios({
+      method: 'POST', 
+      url:'/api/order',
+      data: newOrder
+    }).then(response => {
+      console.log('POST response: ', response);
+      fetchOrders();
     })
-    dispatch({
-      type: 'CLEAR_CART',
-    })
-    dispatch({
-      type: 'CLEAR_CUSTOMER',
-    })
-    history.push("/");
+  }
+  
+
+
+
+  const fetchOrders = () =>{
+    axios.get('/api/order')
+          .then((response) => {
+            dispatch({
+              type: 'ADD_ORDER',
+              payload: response.data
+            })
+            dispatch({
+              type: 'CLEAR_CART',
+            })
+            dispatch({
+              type: 'CLEAR_CUSTOMER',
+            })
+          }).catch(err => {
+            console.log('Error on GET: ', err);
+          })
+          history.push("/");
   };
 
   const toInfo = () => {
@@ -89,5 +111,6 @@ function Checkout() {
     </>
   );
 }
+
 
 export default Checkout;
