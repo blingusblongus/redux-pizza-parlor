@@ -1,0 +1,19 @@
+.cardContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.card {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+img {
+    width: 350px;
+    height: 350px;
+}
+
+.bottomFlexContainer {
+    display: flex;
+    justify-content: space-between;
+}
