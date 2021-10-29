@@ -1,10 +1,10 @@
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import MoreDetails from "../MoreDetails/MoreDetails";
 import axios from 'axios';
 
-function Admin() {
+function Admin({fetchOrders}) {
 
     const orders = useSelector(state => state.orders)
 
@@ -40,6 +40,10 @@ function Admin() {
         console.log('clicked clearDetails');
         setMoreDetailsToggle(false);
     } // end clearDetails
+
+    useEffect(() => {
+        fetchOrders();
+    }, []);
     
     console.log(activeOrder);
 
@@ -57,7 +61,7 @@ function Admin() {
                     {orders.map((orderItem, i) => {
                         return (
                             <tr
-                                onClick={() => handleMoreDetails(i)}
+                                // onClick={() => handleMoreDetails(i)}
                                 key={i}>
                                 <td>{orderItem.customer_name}</td>
                                 <td>{orderItem.type}</td>
