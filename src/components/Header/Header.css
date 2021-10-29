@@ -1,4 +1,7 @@
 .App-title {
-    /* display: inline-block; */
     text-align: left;
+}
+
+.App-title:hover{
+    cursor: pointer;
 }
