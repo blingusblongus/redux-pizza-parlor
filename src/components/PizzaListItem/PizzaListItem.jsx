@@ -20,16 +20,6 @@ function PizzaListItem({ pizza }) {
     setToggle(!toggle);
   } // end changeButton
 
-  const addPizza = () => {
-    // setNewPizza(pizza)
-    console.log("Add clicked");
-    dispatch({
-      type: "ADD_PIZZA",
-      payload: pizza,
-    });
-    changeButton();
-  }; // addPizza
-
   const removePizza = () => {
     console.log("Remove clicked");
     dispatch({
@@ -39,7 +29,17 @@ function PizzaListItem({ pizza }) {
     changeButton();
   }; // end remove
 
-  // console.log('this is pizza', pizza);
+    const addPizza = () => {
+        
+        // setNewPizza(pizza)
+        console.log('Add clicked');
+        dispatch({
+            type: 'ADD_PIZZA',
+            payload: {...pizza, quantity: 1}
+        })
+        changeButton ()
+    } // addPizza
+
   return (
     <div className="cardContainer">
       <div className="card">
