@@ -31,10 +31,6 @@ function Checkout() {
     pizzas: cart
   }
 
-  
-
-
-
   const handleCheckout = () => {
     dispatch({
       type: 'ADD_ORDER',
